@@ -50,9 +50,12 @@ public class JSR303InputVerifierTest {
 		when(stringField.getConvertedValue(nameToTest)).thenReturn(nameToTest);
 		when(stringField.getConvertedValue("")).thenReturn("");
 		
-		when(integerField.getConvertedValue(ageStringToTest)).thenReturn(new Integer(ageStringToTest));
-		when(integerField.getConvertedValue(invalidAgeStringToTest)).thenReturn(new Integer(invalidAgeStringToTest));
-		when(integerField.getConvertedValue(invalidFormatAgeString)).thenThrow(new MetaTypeConversionException("", null));
+		when(integerField.getConvertedValue(ageStringToTest)).
+			thenReturn(new Integer(ageStringToTest));
+		when(integerField.getConvertedValue(invalidAgeStringToTest)).
+			thenReturn(new Integer(invalidAgeStringToTest));
+		when(integerField.getConvertedValue(invalidFormatAgeString)).
+			thenThrow(new MetaTypeConversionException("", null));
 		
 		doReturn(Person.class).when(stringField).getDeclaringClass();
 		doReturn(Person.class).when(integerField).getDeclaringClass();
@@ -117,11 +120,12 @@ public class JSR303InputVerifierTest {
 	@Test
 	public void cannotConvertTheToAValidValue() {
 		ValidationFailedEvent failedEvent = mock(ValidationFailedEvent.class);
+		String invalidMessage = "invalid value for " + ageField;
+		
 		ageTextField.setText(invalidFormatAgeString);
 		ageVerifier.setValidationFailedEvent(failedEvent);
 		
 		assertFalse(ageVerifier.verify(ageTextField));
-		
-		verify(failedEvent).validationFailed(ageTextField, ageField, "", ageTextField.getText());
+		verify(failedEvent).validationFailed(ageTextField, ageField, invalidMessage, ageTextField.getText());
 	}
 }

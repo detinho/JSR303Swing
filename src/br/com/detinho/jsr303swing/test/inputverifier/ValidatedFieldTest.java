@@ -9,6 +9,7 @@ import static org.mockito.Mockito.*;
 import br.com.detinho.jsr303swing.main.inputverifier.NoSuchFieldRuntimeException;
 import br.com.detinho.jsr303swing.main.inputverifier.ValidatedField;
 import br.com.detinho.jsr303swing.main.inputverifier.converters.IntegerMetaTypeConverter;
+import br.com.detinho.jsr303swing.main.inputverifier.converters.MetaTypeConversionException;
 import br.com.detinho.jsr303swing.main.inputverifier.converters.MetaTypeConverterFinder;
 import br.com.detinho.jsr303swing.main.inputverifier.converters.StringMetaTypeConverter;
 import br.com.detinho.jsr303swing.test.Person;
@@ -56,6 +57,12 @@ public class ValidatedFieldTest {
 		Integer integerValue = new Integer(textFieldValue);
 		Object returnedObject = integerField.getConvertedValue(textFieldValue);
 		assertEquals(integerValue, returnedObject);
+	}
+	
+	@Test(expected=MetaTypeConversionException.class)
+	public void shouldThrowAnMetaTypeConversionException() {
+		String textFieldValue = "Error.";
+		integerField.getConvertedValue(textFieldValue);
 	}
 
 }

@@ -40,9 +40,7 @@ public class JSR303InputVerifier extends InputVerifier {
 			toBeValidated = convertThe(textField);
 			return tryToValidateTheObject(toBeValidated);
 		} catch (MetaTypeConversionException ex) {
-			if (failedEvent != null)
-				fireValidationFailedEvent(textField, field.getFieldName(), ex.getMessage(), 
-						toBeValidated);
+			fireValidationEventBasedOnException(toBeValidated);
 			return false;
 		}
 	}
@@ -58,6 +56,14 @@ public class JSR303InputVerifier extends InputVerifier {
 			fireValidationFailedEvents();
 		
 		return validationPassed;
+	}
+	
+	private void fireValidationEventBasedOnException(Object toBeValidated) {
+		if (failedEvent != null) {
+			String failedMessage = "invalid value for " + field.getFieldName();
+			fireValidationFailedEvent(textField, field.getFieldName(), failedMessage, 
+					toBeValidated);
+		}
 	}
 
 	private Object convertThe(JTextField textFieldObject) {
