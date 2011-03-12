@@ -1,0 +1,5 @@
+ABOUT THE PROJECT
+=================
+
+The JSR303Swing project's goal is to integrate the JSR303 (Beans Validation) 
+with the InputVerifier class from Java Swing.
