@@ -24,7 +24,7 @@ public class JSR303InputVerifier extends InputVerifier {
 	private Set<?> constraintViolations = Collections.emptySet();
 
 	public JSR303InputVerifier(JTextField textField, ValidatedField field,
-			Validator validator) throws Exception {
+			Validator validator) {
 		this.theClass = field.getDeclaringClass();
 		this.field = field;
 		this.textField = textField;
