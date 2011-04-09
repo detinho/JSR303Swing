@@ -21,12 +21,12 @@ public class Person {
 		this.age = age;
 	}
 	
-	public String getName() {
+/*	public String getName() {
 		return name;
 	}
 	
 	public Integer getAge() {
 		return age;
-	}
+	}*/
 	
 }

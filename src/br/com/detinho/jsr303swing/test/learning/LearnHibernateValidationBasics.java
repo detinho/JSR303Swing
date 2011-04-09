@@ -57,12 +57,12 @@ public class LearnHibernateValidationBasics {
 		assertEquals("may not be empty", constraintViolation.iterator().next().getMessage());
 	}
 	
-	@Test
-	public void shouldThrowAnException() {
+//	@Test
+//	public void shouldThrowAnException() {
 //		try {
-			validator.validateValue(Person.class, "age", "Test");
+//			validator.validateValue(Person.class, "age", "Test");
 //		} catch (ValidationException ex) {
 //			assertEquals(ex.getCause().getMessage(), "");
 //		}
-	}
+//	}
 }

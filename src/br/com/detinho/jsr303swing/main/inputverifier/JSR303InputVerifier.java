@@ -34,6 +34,16 @@ public class JSR303InputVerifier extends InputVerifier {
 	}
 
 	@Override
+	public boolean shouldYieldFocus(JComponent input) {
+		verify(input);
+		return true;
+	}
+	
+	public boolean verify() {
+		return verify(textField);
+	}
+	
+	@Override
 	public boolean verify(JComponent input) {
 		Object toBeValidated = textField.getText();
 		try {

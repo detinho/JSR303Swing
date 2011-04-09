@@ -64,5 +64,10 @@ public class ValidatedFieldTest {
 		String textFieldValue = "Error.";
 		integerField.getConvertedValue(textFieldValue);
 	}
+	
+	@Test
+	public void verifyIfTheNameIsCorrect() {
+		assertEquals(stringField.getFieldName(), "name");
+	}
 
 }

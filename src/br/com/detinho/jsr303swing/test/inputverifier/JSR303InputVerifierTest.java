@@ -84,6 +84,12 @@ public class JSR303InputVerifierTest {
 	}
 	
 	@Test
+	public void shouldPassTheVerificationTestWithoutPassingTheParameter() {
+		nameTextField.setText(nameToTest);
+		assertTrue(nameVerifier.verify());
+	}
+	
+	@Test
 	public void shouldNotifyValidationPassed() {
 		ValidationPassedEvent passedEvent = mock(ValidationPassedEvent.class);
 		nameTextField.setText(nameToTest);
