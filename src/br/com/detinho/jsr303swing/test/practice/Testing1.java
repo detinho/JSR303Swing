@@ -11,13 +11,9 @@ import javax.swing.JTextField;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import org.hibernate.validator.engine.ValidationContext;
-
 import br.com.detinho.jsr303swing.main.context.VerifierContext;
 import br.com.detinho.jsr303swing.main.inputverifier.JSR303InputVerifier;
-import br.com.detinho.jsr303swing.main.inputverifier.ValidatedField;
 import br.com.detinho.jsr303swing.main.inputverifier.ValidationFailedPopUp;
-import br.com.detinho.jsr303swing.main.inputverifier.converters.MetaTypeConverterFinder;
 import br.com.detinho.jsr303swing.test.Person;
 
 public class Testing1 extends JFrame {
@@ -31,14 +27,6 @@ public class Testing1 extends JFrame {
 	
 	public Testing1() throws Exception {
 		getContentPane().setLayout(new FlowLayout());
-		
-		/*MetaTypeConverterFinder finder = new MetaTypeConverterFinder();
-		
-		ValidatedField nameField = new ValidatedField(Person.class, "name", finder);
-		ValidatedField ageField = new ValidatedField(Person.class, "age", finder);
-		
-		registerFailedEvent(new JSR303InputVerifier(textName, nameField, validator));
-		registerFailedEvent(new JSR303InputVerifier(textAge, ageField, validator));*/
 		
 		context.add(textName, Person.class, "name", new ValidationFailedPopUp(this));
 		context.add(textAge, Person.class, "age", new ValidationFailedPopUp(this));
