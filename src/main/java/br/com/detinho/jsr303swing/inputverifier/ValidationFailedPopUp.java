@@ -14,8 +14,7 @@ import javax.swing.JLabel;
 /**
  * <p>Based on code from Michal Urban</p>
  * <a href="http://www.javalobby.org/java/forums/t20551.html">
- * 		http://www.javalobby.org/java/forums/t20551.html
- * </a>
+ * 		http://www.javalobby.org/java/forums/t20551.html>Link</a>
  */
 public class ValidationFailedPopUp implements ValidationFailedEvent, KeyListener {
 

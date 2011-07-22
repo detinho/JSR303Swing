@@ -24,9 +24,15 @@ public class IntegerMetatypeConverterTest {
 		assertEquals(new Integer(testNumber), converter.from(testNumber));
 	}
 	
-	@Test(expected=MetaTypeConversionException.class)
+	@Test
 	public void shouldThrowAnException() {
-		converter.from("Error!");
+		String value = "Error";
+		try {
+			converter.from(value);
+			fail("Should have thrown.");
+		} catch (MetaTypeConversionException ex) {
+			assertEquals(ex.getValue(), value);
+		}
 	}
 
 }

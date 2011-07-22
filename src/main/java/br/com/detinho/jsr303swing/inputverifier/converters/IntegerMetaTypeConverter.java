@@ -7,7 +7,7 @@ public class IntegerMetaTypeConverter implements MetaTypeConverter {
 			return new Integer(value);
 		} catch (NumberFormatException ex) {
 			String message = "Error converting " + value + ".";
-			throw new MetaTypeConversionException(message, ex);
+			throw new MetaTypeConversionException(message, ex, value);
 		}
 	}
 	

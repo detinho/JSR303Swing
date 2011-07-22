@@ -55,7 +55,7 @@ public class JSR303InputVerifierTest {
 		when(integerField.getConvertedValue(invalidAgeStringToTest)).
 			thenReturn(new Integer(invalidAgeStringToTest));
 		when(integerField.getConvertedValue(invalidFormatAgeString)).
-			thenThrow(new MetaTypeConversionException("", null));
+			thenThrow(new MetaTypeConversionException("", null, invalidFormatAgeString));
 		
 		doReturn(Person.class).when(stringField).getDeclaringClass();
 		doReturn(Person.class).when(integerField).getDeclaringClass();
