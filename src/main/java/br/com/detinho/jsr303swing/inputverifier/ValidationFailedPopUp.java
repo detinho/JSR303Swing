@@ -66,12 +66,13 @@ public class ValidationFailedPopUp implements ValidationFailedEvent, KeyListener
 	}
 	
 	public void keyPressed(KeyEvent event) {
-		popup.setVisible(false);
+		
 	}
 	
 	public void keyTyped(KeyEvent event) {}
 	
 	public void keyReleased(KeyEvent event) {
+		popup.setVisible(false);
 		this.sender.removeKeyListener(this);
 	}
 }

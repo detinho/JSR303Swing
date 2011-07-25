@@ -1,9 +1,9 @@
 package br.com.detinho.jsr303swing.practice;
 
-import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,10 +11,10 @@ import javax.swing.JTextField;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import br.com.detinho.jsr303swing.Person;
 import br.com.detinho.jsr303swing.context.VerifierContext;
 import br.com.detinho.jsr303swing.inputverifier.JSR303InputVerifier;
 import br.com.detinho.jsr303swing.inputverifier.ValidationFailedPopUp;
-import br.com.detinho.jsr303swing.Person;
 
 public class Example extends JFrame {
 
@@ -26,26 +26,13 @@ public class Example extends JFrame {
 	private VerifierContext context = new VerifierContext(validator);
 	
 	public Example() throws Exception {
-		getContentPane().setLayout(new FlowLayout());
+		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		
 		context.add(textName, Person.class, "name", new ValidationFailedPopUp(this));
 		context.add(textAge, Person.class, "age", new ValidationFailedPopUp(this));
 		
 		JButton validateAll = new JButton("Validate All");
-		validateAll.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {}
-			
+		validateAll.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (e.getClickCount() == 1) {
@@ -60,8 +47,6 @@ public class Example extends JFrame {
 		add(textAge);
 		add(validateAll);
 		pack();
-		
-
 	}
 	
 	private void verifyAll() {

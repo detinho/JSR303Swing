@@ -1,5 +1,7 @@
 package br.com.detinho.jsr303swing.inputverifier;
 
+import java.util.Locale;
+
 import javax.swing.JTextField;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -37,6 +39,7 @@ public class JSR303InputVerifierTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Locale.setDefault(Locale.ENGLISH);
 		prepareMocks();
 		
 		nameTextField = new JTextField();
@@ -108,7 +111,7 @@ public class JSR303InputVerifierTest {
 		
 		nameVerifier.verify(nameTextField);
 		
-		verify(failedEvent).validationFailed(nameTextField, nameField, "não pode estar vazio", nameTextField.getText());
+		verify(failedEvent).validationFailed(nameTextField, nameField, "may not be empty", nameTextField.getText());
 	}
 	
 	@Test

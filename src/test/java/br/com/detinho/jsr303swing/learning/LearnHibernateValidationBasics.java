@@ -1,11 +1,11 @@
 package br.com.detinho.jsr303swing.learning;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Set;
-import static org.junit.Assert.*;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
-import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
